@@ -15,17 +15,12 @@ const app = express();
 
 app.use(express.json());
 // CORS configuration
-const corsOptions = {
-  origin: "https://blogify-seven-hazel.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-
-app.use(cors(corsOptions));
-
-app.options("*", cors(corsOptions))
+app.use(
+  cors({
+    origin: "https://blogify-seven-hazel.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
 
 app.use("/images", express.static("images"));
 
