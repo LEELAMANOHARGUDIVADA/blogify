@@ -19,7 +19,7 @@ const UpdateBlog = ({ userId }) => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/blog/getsingleblog/${id}`);
+        const response = await axios.get(`https://blogify-api-neon.vercel.app/api/blog/getsingleblog/${id}`);
         if (response.status !== 200) {
           throw new Error("Cannot fetch Blog");
         }
