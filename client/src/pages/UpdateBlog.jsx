@@ -68,7 +68,7 @@ const UpdateBlog = ({ userId }) => {
     }
 
     try {
-      const response = await axios.put(`http://localhost:8000/api/blog/updateblog/${id}`, data, {
+      const response = await axios.put(`https://blogify-api-neon.vercel.app/api/blog/updateblog/${id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
