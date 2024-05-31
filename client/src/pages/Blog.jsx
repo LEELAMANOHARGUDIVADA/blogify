@@ -8,7 +8,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/blog/getsingleblog/${id}`);
+        const response = await fetch(`https://blogify-api-neon.vercel.app/api/blog/getsingleblog/${id}`);
         if (!response.ok) {
           throw new Error("Cannot fetch Blog");
         }
