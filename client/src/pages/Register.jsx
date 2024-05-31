@@ -32,7 +32,7 @@ const Register = ({user,setUser, setUserData, userData }) => {
     console.log(formData);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/signup', formData);
+      const response = await axios.post('https://blogify-api-neon.vercel.app/api/signup', formData);
       setUserData(response.data.user._id);
       console.log(userId)
       setUser(formData.name);
