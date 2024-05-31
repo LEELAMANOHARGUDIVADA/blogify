@@ -14,14 +14,16 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["https://blogify-seven-hazel.vercel.app/"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-    allowedHeaders: ['Content-Type'],
-  })
-);
+// CORS configuration
+const corsOptions = {
+  origin: ["https://blogify-seven-hazel.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 
 app.use("/images", express.static("images"));
 
