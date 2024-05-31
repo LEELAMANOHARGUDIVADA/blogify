@@ -35,7 +35,7 @@ const CreateBlog = ({ userId, setUserId }) => {
         data.append('user', id);
 
         try {
-            const response = await axios.post('http://localhost:8000/api/blog/createBlog', data, {
+            const response = await axios.post('https://blogify-api-neon.vercel.app/api/blog/createBlog', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
