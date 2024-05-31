@@ -19,8 +19,7 @@ const corsOptions = {
   origin: ["https://blogify-seven-hazel.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-  optionsSuccessStatus: 204,
+  credentials: true
 };
 
 app.use(cors(corsOptions));
@@ -112,7 +111,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("Image has been uploaded successfully!");
 });
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT|| 8000;
 
 app.listen(PORT, () => {
   try {
