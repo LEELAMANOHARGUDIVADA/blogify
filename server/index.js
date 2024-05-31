@@ -1,26 +1,26 @@
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
+import dotenv from "dotenv";
 import mongoose from "mongoose";
-import User from "./models/userSchema.js";
-
 import blogRoutes from "./routes/blogRoutes.js";
 import multer from "multer";
+import User from "./models/userSchema.js";
 import Blog from "./models/blogSchema.js";
 import generateToken from "./utils/jwt.js";
 import bcrypt from "bcryptjs";
+
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
-// CORS configuration
 app.use(
   cors({
-    origin: "https://blogify-seven-hazel.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: ["https://blogify-seven-hazel.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
   })
+);
 
 app.use("/images", express.static("images"));
 
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.send("App is working correctly");
 });
 
-mongoose.set(`strictQuery`, false);
+mongoose.set('strictQuery', false);
 
 const DB = process.env.MONGO_URL;
 
@@ -47,8 +47,8 @@ app.post("/api/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    const existingUser = User.findOne({ email });
-    if (existingUser === existingUser.email) {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
       return res.status(400).json({ error: "Email already exists" });
     }
 
@@ -59,13 +59,11 @@ app.post("/api/signup", async (req, res) => {
     const user = new User({ email, password, name });
     await user.save();
 
-    res
-      .status(200)
-      .json({
-        message: "User registered successfully",
-        user,
-        token: generateToken(user._id),
-      });
+    res.status(200).json({
+      message: "User registered successfully",
+      user,
+      token: generateToken(user._id),
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -75,45 +73,37 @@ app.post("/api/login", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user || !(await user.matchPassword(password))) {
-      throw new Error("Invalid credentials");
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ error: "Invalid credentials" });
     }
-    res
-      .status(200)
-      .json({
-        message: "Login Successful",
-        user,
-        token: generateToken(user._id),
-      });
+    res.status(200).json({
+      message: "Login Successful",
+      user,
+      token: generateToken(user._id),
+    });
   } catch (error) {
     res.status(401).json({ error: error.message });
   }
 });
 
-//image upload
+// Image upload
 const storage = multer.diskStorage({
-  destination: (req, file, fn) => {
-    fn(null, "images");
+  destination: (req, file, cb) => {
+    cb(null, "images");
   },
-  filename: (req, file, fn) => {
-    fn(null, req.body.img);
-    fn(null, "image1.jpg");
+  filename: (req, file, cb) => {
+    cb(null, req.body.img || "image1.jpg");
   },
 });
 
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
-  // console.log(req.body)
   res.status(200).json("Image has been uploaded successfully!");
 });
 
-const PORT = process.env.PORT|| 8000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  try {
-    console.log("Server Running on", PORT);
-    connectDB();
-  } catch (error) {
-    console.log(error);
-  }
+  console.log(`Server running on port ${PORT}`);
+  connectDB();
 });
