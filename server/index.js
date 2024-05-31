@@ -25,6 +25,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.options("*", cors(corsOptions))
+
 app.use("/images", express.static("images"));
 
 app.get("/", (req, res) => {
