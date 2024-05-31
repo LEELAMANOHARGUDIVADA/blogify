@@ -41,7 +41,7 @@ const MyBlogs = ({ userId, setUserId }) => {
   const handlePostDelete = async (blogId) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/blog/deleteblog/${blogId}`,
+        `https://blogify-api-neon.vercel.app/api/blog/deleteblog/${blogId}`,
         {
           method: "DELETE",
         }
