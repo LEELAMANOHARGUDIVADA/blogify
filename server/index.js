@@ -19,6 +19,7 @@ app.use(
     origin: ["https://blogify-seven-hazel.vercel.app/"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    allowedHeaders: ['Content-Type'],
   })
 );
 
