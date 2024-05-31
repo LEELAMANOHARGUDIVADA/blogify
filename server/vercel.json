@@ -13,7 +13,12 @@
          "methods": ["POST", "GET", "PUT", "DELETE", "PATCH", "OPTIONS"],
           "headers": {
               "Access-Control-Allow-Origin": "*"
-          }
+          },
+          "functions": {
+      "api/**/*.js": {
+        "maxDuration": 100 // Increase as needed
+      }
+    }
       }
     ]
   }
