@@ -21,6 +21,7 @@
   "functions": {
     "api/**/*.js": {
       "maxDuration": 100
+      
     }
   }
 }
