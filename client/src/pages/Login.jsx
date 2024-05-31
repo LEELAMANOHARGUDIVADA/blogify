@@ -18,7 +18,7 @@ const Login = ({user, setUser, setUserData, userData }) => {
     event.preventDefault();
     
     try {
-      const response = await axios.post('http://localhost:8000/api/login', { email, password });
+      const response = await axios.post('https://blogify-api-neon.vercel.app/api/login', { email, password });
       // console.log(response.data.user._id);
       const userId = response.data.user._id;
       localStorage.setItem('authToken', response.data.token);
