@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 // CORS configuration
 const corsOptions = {
-  origin: ["https://blogify-seven-hazel.vercel.app"],
+  origin: "https://blogify-seven-hazel.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
