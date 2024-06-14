@@ -23,7 +23,7 @@ const MyBlogs = ({ userId, setUserId }) => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(
-          `https://blogify-api-neon.vercel.app/api/blog/user-blogs/${userId}`
+          `https://blogify-m8br.onrender.com/api/blog/user-blogs/${userId}`
         );
         if (!response.ok) {
           throw new Error("Cannot fetch Blogs");
@@ -41,7 +41,7 @@ const MyBlogs = ({ userId, setUserId }) => {
   const handlePostDelete = async (blogId) => {
     try {
       const response = await fetch(
-        `https://blogify-api-neon.vercel.app/api/blog/deleteblog/${blogId}`,
+        `https://blogify-m8br.onrender.com/api/blog/deleteblog/${blogId}`,
         {
           method: "DELETE",
         }
