@@ -9,7 +9,7 @@ const AllBlogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("https://blogify-api-kohl.vercel.app/api/blog/getallblogs");
+        const response = await fetch("https://blogify-m8br.onrender.com/api/blog/getallblogs");
         if (!response.ok) {
           throw  new Error("Cannot fetch Blogs")
         }
