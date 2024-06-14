@@ -18,7 +18,7 @@ const Login = ({user, setUser, setUserData, userData }) => {
     event.preventDefault();
     
     try {
-      const response = await axios.post('https://blogify-api-neon.vercel.app/api/login', { email, password });
+      const response = await axios.post('https://blogify-m8br.onrender.com/api/login', { email, password });
       // console.log(response.data.user._id);
       const userId = response.data.user._id;
       localStorage.setItem('authToken', response.data.token);
