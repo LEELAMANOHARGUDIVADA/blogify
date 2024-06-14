@@ -28,7 +28,7 @@ const Blog = () => {
   return (
     <div className="w-full h-full flex items-center justify-center">
       <div className='w-2/3 h-full flex flex-col items-center justify-center'>
-      {blogData.image && <img src={`http://localhost:8000/${blogData.image}`} alt={blogData.title} className='mt-10 ' />}
+      {blogData.image && <img src={`https://blogify-m8br.onrender.com/${blogData.image}`} alt={blogData.title} className='mt-10 ' />}
       <h2 className='text-4xl font-bold my-5 text-gray-800'>{blogData.title}</h2>
       <p className='text-sm font-medium text-gray-600'>{blogData.description}</p>
     </div>
