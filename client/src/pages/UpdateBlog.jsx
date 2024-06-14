@@ -19,7 +19,7 @@ const UpdateBlog = ({ userId }) => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`https://blogify-api-neon.vercel.app/api/blog/getsingleblog/${id}`);
+        const response = await axios.get(`https://blogify-m8br.onrender.com/api/blog/getsingleblog/${id}`);
         if (response.status !== 200) {
           throw new Error("Cannot fetch Blog");
         }
@@ -68,7 +68,7 @@ const UpdateBlog = ({ userId }) => {
     }
 
     try {
-      const response = await axios.put(`https://blogify-api-neon.vercel.app/api/blog/updateblog/${id}`, data, {
+      const response = await axios.put(`https://blogify-m8br.onrender.com/api/blog/updateblog/${id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
