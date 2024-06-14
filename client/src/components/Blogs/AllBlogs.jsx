@@ -46,7 +46,7 @@ const AllBlogs = () => {
         data.map((blog,idx) => (
           <Link to={`/blogs/${blog._id}`}>
             <div key={idx} className='h-96 overflow-hidden'>
-        <img src={`http://localhost:8000/${blog.image}`} alt={blog.image}  className='w-96 h-56 object-cover object-center rounded-xl' />
+        <img src={`https://blogify-m8br.onrender.com/${blog.image}`} alt={blog.image}  className='w-96 h-56 object-cover object-center rounded-xl' />
         
         <h3 className='text-xl font-bold mt-2'>{blog.title}</h3>
         <h4 className="text-gray-400 text-sm">{blog.description}</h4>
