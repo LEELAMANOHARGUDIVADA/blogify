@@ -78,7 +78,7 @@ const MyBlogs = ({ userId, setUserId }) => {
             <div key={idx} className="w-full my-5 flex items-center ">
               <Link to={`/blogs/${blog._id}`} className="w-2/3">
                 <img
-                  src={`http://localhost:8000/${blog.image}`}
+                  src={`https://blogify-m8br.onrender.com/${blog.image}`}
                   alt={blog.image}
                   className="w-96 h-60 object-cover object-center rounded-xl"
                 />
