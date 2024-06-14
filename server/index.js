@@ -44,7 +44,6 @@ const connectDB = async () => {
 app.use("/api/blog", blogRoutes);
 
 app.post("/api/signup", async (req, res) => {
-  res.send("signup");
   try {
     const { name, email, password } = req.body;
 
@@ -71,7 +70,7 @@ app.post("/api/signup", async (req, res) => {
 });
 
 app.post("/api/login", async (req, res) => {
-  res.send("login");
+  
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
